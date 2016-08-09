@@ -1,7 +1,5 @@
 package com.syusuk;
 
-import java.util.Date;
-
 public class MovieInfo implements java.io.Serializable {
 
     private String name;
