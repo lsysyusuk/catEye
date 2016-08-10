@@ -84,7 +84,7 @@ public class CatEye {
                     String firstWeekDoc = totalBoxOfficeDoc.get(1).text();
                     movieInfo.setFirstWeekBoxOffice(firstWeekDoc.substring(firstWeekDoc.indexOf(":")));
                 }
-                if (duration > 1) {
+                if (duration >= 0) {
                     //昨日相关信息
                     Elements dayDocs = movieDoc.select("#ticketContent .content ul");
                     for (int j = 0; j < dayDocs.size(); j++) {
@@ -159,7 +159,7 @@ public class CatEye {
             dataRow.put("演员",movieInfo.getLeadActors());
             dataRow.put("上映日期",movieInfo.getReleaseDate());
             dataRow.put("下线日期", "");
-            dataRow.put("上映天数",String.valueOf(movieInfo.getDuration()));
+            dataRow.put("上映天数",movieInfo.getDuration() > 0 ? String.valueOf(movieInfo.getDuration()) : "举例上映还差" + Math.abs(movieInfo.getDuration()) + "天" );
             dataRow.put("累计票房",movieInfo.getTotalBoxOffice());
             dataRow.put("首周票房",movieInfo.getFirstWeekBoxOffice());
             dataRow.put("票房占比",movieInfo.getBoxOfficePercent());
